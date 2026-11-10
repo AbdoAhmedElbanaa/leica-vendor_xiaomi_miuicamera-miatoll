@@ -10,6 +10,202 @@ soong_namespace {
 }
 
 cc_prebuilt_library_shared {
+    name: "libOpenCL",
+    owner: "xiaomi",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/libOpenCL.so",
+            ],
+            shared_libs: [
+                "libcutils",
+                "libvndksupport",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libarcsoft_dualcam_refocus",
+    owner: "xiaomi",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/libarcsoft_dualcam_refocus.so",
+            ],
+            shared_libs: [
+                "libarcsoft_dualcam_refocus_rear_t",
+                "libarcsoft_dualcam_refocus_rear_w",
+                "libarcsoft_dualcam_refocus_front",
+                "libmpbase",
+                "liblog",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libarcsoft_dualcam_refocus_front",
+    owner: "xiaomi",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/libarcsoft_dualcam_refocus_front.so",
+            ],
+            shared_libs: [
+                "libmpbase",
+                "libOpenCL",
+                "liblog",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libarcsoft_dualcam_refocus_rear_t",
+    owner: "xiaomi",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/libarcsoft_dualcam_refocus_rear_t.so",
+            ],
+            shared_libs: [
+                "libmpbase",
+                "libOpenCL",
+                "liblog",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libarcsoft_dualcam_refocus_rear_w",
+    owner: "xiaomi",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/libarcsoft_dualcam_refocus_rear_w.so",
+            ],
+            shared_libs: [
+                "libmpbase",
+                "libOpenCL",
+                "liblog",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libarcsoft_portrait_lighting",
+    owner: "xiaomi",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/libarcsoft_portrait_lighting.so",
+            ],
+            shared_libs: [
+                "libmpbase",
+                "libarcsoft_portrait_lighting_c",
+                "liblog",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libarcsoft_portrait_lighting_c",
+    owner: "xiaomi",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/libarcsoft_portrait_lighting_c.so",
+            ],
+            shared_libs: [
+                "libOpenCL",
+                "liblog",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libmpbase",
+    owner: "xiaomi",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/libmpbase.so",
+            ],
+            shared_libs: [
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
     name: "libcamera_algoup_jni.xiaomi",
     owner: "xiaomi",
     strip: {
@@ -352,6 +548,49 @@ android_app_import {
         enabled: false,
     },
     privileged: true,
+}
+
+android_app_import {
+    name: "MIUIGallery",
+    owner: "xiaomi",
+    apk: "proprietary/system/priv-app/MIUIGallery/MIUIGallery.apk",
+    overrides: [
+        "Gallery2",
+    ],
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
+}
+
+android_app_import {
+    name: "MIUIGalleryEditor",
+    owner: "xiaomi",
+    apk: "proprietary/system/priv-app/MIUIGalleryEditor/MIUIGalleryEditor.apk",
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
+}
+
+install_symlink {
+    name: "system_priv-app_MiuiCamera_lib_arm64_libcamera_algoup_jni_xiaomi_so",
+    installed_location: "priv-app/MiuiCamera/lib/arm64/libcamera_algoup_jni.xiaomi.so",
+    symlink_target: "/system/lib64/libcamera_algoup_jni.xiaomi.so",
+}
+
+install_symlink {
+    name: "system_priv-app_MiuiCamera_lib_arm64_libcamera_jpegutil_jni_xiaomi_so",
+    installed_location: "priv-app/MiuiCamera/lib/arm64/libcamera_jpegutil_jni.xiaomi.so",
+    symlink_target: "/system/lib64/libcamera_jpegutil_jni.xiaomi.so",
+}
+
+install_symlink {
+    name: "system_priv-app_MiuiCamera_lib_arm64_libcamera_mianode_jni_xiaomi_so",
+    installed_location: "priv-app/MiuiCamera/lib/arm64/libcamera_mianode_jni.xiaomi.so",
+    symlink_target: "/system/lib64/libcamera_mianode_jni.xiaomi.so",
 }
 
 install_symlink {
