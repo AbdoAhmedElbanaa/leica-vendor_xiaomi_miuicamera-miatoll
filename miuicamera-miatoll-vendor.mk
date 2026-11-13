@@ -6,14 +6,14 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/xiaomi/miuicamera-miatoll
 
 PRODUCT_PACKAGES += \
-    libOpenCL \
-    libarcsoft_dualcam_refocus \
-    libarcsoft_dualcam_refocus_front \
-    libarcsoft_dualcam_refocus_rear_t \
-    libarcsoft_dualcam_refocus_rear_w \
-    libarcsoft_portrait_lighting \
-    libarcsoft_portrait_lighting_c \
-    libmpbase \
+    libOpenCL.miuicamera \
+    libarcsoft_dualcam_refocus.miuicamera \
+    libarcsoft_dualcam_refocus_front.miuicamera \
+    libarcsoft_dualcam_refocus_rear_t.miuicamera \
+    libarcsoft_dualcam_refocus_rear_w.miuicamera \
+    libarcsoft_portrait_lighting.miuicamera \
+    libarcsoft_portrait_lighting_c.miuicamera \
+    libmpbase.miuicamera \
     libcamera_algoup_jni.xiaomi \
     libcamera_jpegutil_jni.xiaomi \
     libcamera_mianode_jni.xiaomi \
